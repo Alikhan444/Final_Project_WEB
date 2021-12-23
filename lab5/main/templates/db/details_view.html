@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+<!--<body>-->
+{%block content%}
+
+<style type="text/css">
+ .container2{
+	width: 80%;
+	max-width: 900px;
+}
+
+.infoDishes{
+	width: 70%;
+}
+.imageS{
+    max-width: 500px;
+}
+</style>
+
+    <div  class="container2">
+        <div class="infoDishes">
+            <h2>Название: {{dishes.name}}</h2>
+            <h2>Цена: {{dishes.price}} тг</h2>
+            <h2>Ингредиенты: {{dishes.ingredients}}</h2>
+            <h2>Время приготовления: {{dishes.cooking_time}} мин</h2>
+        </div>
+        <br>
+    <img class="imageS" src="{% static 'main/menuImages/soups/супСРисом.png' %}" alt="">
+
+
+          <form action="{% url 'update' dishes.id%}">
+              <button class="btn btn-info">Изменить блюдо</button>
+          </form>
+        <br>
+
+         <form action="{% url 'delete' dishes.id%}">
+             <button class="btn btn-info">Удалить блюдо</button>
+         </form>
+                <br>
+        <form action="{% url 'adminpanel' %}">
+              <button class="btn btn-info">Назад в страницу админа</button>
+        </form>
+        <br>
+
+   </div>
+{%endblock%}

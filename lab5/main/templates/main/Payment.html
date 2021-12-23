@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'main/css/Style.css' %}">
+    <title>Payment</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<header class="header2">
+        <div class="container">
+            <div class="header__inner">
+                <div class="header__logo" style="color:black;">Simple</div>
+
+                <nav class="nav">
+                    <a class="nav__link" href="{% url 'about' %}" style="color:black;">About</a>
+                    <a class="nav__link" href="#" style="color:black;">Service</a>
+                    <a class="nav__link" href="{% url 'menu' %}" style="color:black;">Menu</a>
+                    <a class="nav__link" href="{% url 'info' %}" style="color:black;">ProjectInfo</a>
+                    <a class="nav__link" href="{% url 'team' %}" style="color:black;">TeamInfo</a>
+                    <a class="nav__link" href="{% url 'contacts' %}" style="color:black;">Contacts</a>
+                    <a class="nav__link active" href="{% url 'pay' %}" style="color:black;">Pay</a>
+                    <a class="nav__link" href="{% url 'adminpanel' %}" style="color:black;">Admin panel</a>
+
+                </nav>
+
+            </div>
+        </div>
+
+
+</header>
+
+    <div class="container2">
+        <div class="left">
+            <h1 class="text-cenetr">Bank card</h1>
+            <div class="card-wrapper">
+                <div class="card-back">
+                    <div class="card-back-line"></div>
+                    <input type="password" id="cvv" placeholder="CVV" maxlength="3">
+                </div>
+                <div class="card-front">
+                    <img src="{% static 'main/images/master_card.png' %}" alt="" class="card-image">
+                    <img src="{% static 'main/images/kaspi_red.png' %}" alt="" class="card-logo">
+                    <input id="card-number" maxlength="16"  placeholder="Anon Anonovich">
+                    <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+                    <span id="inputGroupWarningStatus" class="sr-only">(warning)</span>
+                    <input id="card-month" maxlength="2" placeholder="MM">
+                    <input id="card-year" maxlength="2" placeholder="YY">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="button" type="button">Pay</button>
+
+
+
+</body>
+
+</html>

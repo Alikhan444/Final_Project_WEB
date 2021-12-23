@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+<!--<body>-->
+{%block content%}
+    <div  class="features">
+        <h1>{{dishes.name}}</h1>
+        <h1>{{dishes.price}}</h1>
+        <h1>{{dishes.ingredients}}</h1>
+        <h1>{{dishes.cooking_time}}</h1>
+        <div>{{dishes.picture}}</div>
+    </div>
+{%endblock%}

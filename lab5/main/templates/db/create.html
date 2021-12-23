@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+<!--<body>-->
+{%block content%}
+    <div class="features">
+        <h2>Форма по добавлению Блюд</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.name }} <br><br>
+            {{ form.price }}<br><br>
+            {{ form.ingredients }}<br><br>
+            {{ form.cooking_time }}<br><br>
+{#            {{ form.picture }}<br><br>#}
+            <span>{{ error }}</span>
+        <button class="btn btn-success" type="submit">Добавить блюдо</button>
+        </form>
+
+    <br>
+        <form action="{% url 'adminpanel' %}">
+              <button class="btn btn-info">Назад в страницу админа</button>
+        </form>
+        <br>
+    </div>
+{%endblock%}

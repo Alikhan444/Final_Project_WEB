@@ -1,0 +1,114 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Header */
+.header{
+    width: 100%;
+    padding-top: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.header__inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo{
+    font-size: 30px;
+    font-weight: 700;
+    color: #fff;
+}
+
+/* Nav */
+.nav{
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.nav__link{
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 15px;
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.1s linear;
+}
+
+.nav__link:after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #fce38a;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    transition: opacity 0.1s linear;
+}
+
+
+.nav__link:hover{
+    color:#fce38a;
+}
+
+.nav__link:hover:after,
+.nav__link.active:after{
+    opacity: 1;
+}
+
+
+
+.content{
+    width: 70%;
+    margin: 100px auto;
+}
+
+.Akzhol
+{
+    justify-content: space-between;
+    display: flex;
+    margin-bottom: 100px;
+    align-items: center;
+
+}
+
+.infoAko{
+    margin-left: 200px;
+    width: 60%;
+    align-items: center;
+}
+.infoAko h6{
+    width: 70%;
+}
+
+#Akzhol{
+    margin-left: 100px;
+}
+.Alikhan{
+    margin-top: 100px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+.infoAli{
+    margin-left: 100px;
+    width: 40%;
+    align-items: center;
+}
+
+#Alikhan{
+    height: 300px;
+}
+
+

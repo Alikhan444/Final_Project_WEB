@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block content%}
+
+    <br><br>
+            <form action="{% url 'create' %}">
+                <button class="btn btn-success">Добавить Блюда</button>
+            </form>
+
+        <h1>Блюда:</h1>
+           {% if dishes %}
+                        {% for dish in dishes %}
+                            <h4>{{ dish.name }}</h4>
+                            <h4>{{ dish.price }}</h4>
+                            <h4>{{ dish.ingredients }}</h4>
+                            <h4>{{ dish.cooking_time }}</h4>
+{#                            <h4>{{ dish.picture }}</h4>#}
+{#                            <a href="{% url 'detail' dish.id%}" class="btn btn-warning">Читать детальнее</a>#}
+{#                            <br><br><br>#}
+
+                              <form action="{% url 'detail' dish.id%}">
+                              <button class="btn btn-info">Детальный вид блюда</button>
+                            </form>
+
+                              <br>
+                              <form action="{% url 'update' dish.id%}">
+                                 <button class="btn btn-info">Изменить блюдо</button>
+                              </form>
+
+                             <br>
+                              <form action="{% url 'delete' dish.id%}">
+                                <button class="btn btn-info">Удалить блюду</button>
+                              </form>
+                        {% endfor %}
+                    {% else %}
+                        <p>Блюд нет</p>
+             {% endif %}
+
+
+     <h1>Администраторы:</h1>
+            {% if administrator %}
+                {% for el in administrator %}
+                    <div class="alert alert-warning">
+                        <h3>{{ el.name }}</h3>
+                        <h6>{{ el.login }}</h6>
+                        <h6>{{ el.password }}</h6>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>У нас нет записей!</p>
+            {% endif %}
+    <br><br>
+
+
+       <h1>Заказы:</h1>
+            {% if order %}
+                {% for el in order %}
+                    <div class="alert alert-warning">
+                        <h3>{{ el.type }}</h3>
+                        <h6>{{ el.price }}</h6>
+                        <h6>{{ el.dishes }}</h6>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>У нас нет записей!</p>
+            {% endif %}
+    <br><br>
+
+       <h1>Официанты:</h1>
+            {% if waiter %}
+                {% for el in waiter %}
+                    <div class="alert alert-warning">
+                        <h3>{{ el.name }}</h3>
+                        <h6>{{ el.phone }}</h6>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>У нас нет записей!</p>
+            {% endif %}
+    <br><br>
+{%endblock%}

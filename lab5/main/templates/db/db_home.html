@@ -1,0 +1,435 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'main/css/menu.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:300i,400,700&display=swap&subset=cyrillic-ext"
+              rel="stylesheet">
+        <title>Menu</title>
+
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+    </head>
+
+    <body>
+            <header class="header">
+                <div class="container">
+                    <div class="header__inner">
+                        <div class="header__logo">Simple</div>
+
+                        <nav class="nav">
+                            <a class="nav__link" href="{% url 'about' %}">About</a>
+				            <a class="nav__link" href="#">Service</a>
+				            <a class="nav__link active" href="{% url 'menu' %}">Menu</a>
+				            <a class="nav__link" href="#">Contact</a>
+				            <a class="nav__link" href="#">Join</a>
+				            <a class="nav__link" href="{% url 'info' %}">ProjectInfo</a>
+				            <a class="nav__link" href="{% url 'team' %}">TeamInfo</a>
+				            <a class="nav__link" href="{% url 'contacts' %}">Contacts</a>
+				            <a class="nav__link" href="{% url 'pay' %}">Pay</a>
+                        </nav>
+
+                    </div>
+                </div>
+            </header>
+
+            <div class="intro">
+                <div class="container">
+                    <div class="intro__inner">
+                        <h2 class="intro__suptitle">Restaurant</h2>
+                        <h1 class="intro__title">Welcome to Simple</h1>
+
+                        <a class="btn" href="#">Learn more</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <h1>Администраторы:</h1>
+            {% if administrator %}
+                {% for el in administator %}
+                    <div class="alert alert-warning">
+                        <h3>{{ el.name }}</h3>
+                        <h6>{{ el.login }}</h6>
+                        <h6>{{ el.password }}</h6>
+
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>У нас нет записей!</p>
+            {% endif %}
+
+
+                 <br><br>
+
+        <h1>Блюда:</h1>
+           {% if dishes %}
+                        {% for dish in dishes %}
+                            <h4>{{ dish.name }}</h4>
+                            <h4>{{ dish.price }}</h4>
+                            <h4>{{ dish.ingredients }}</h4>
+                            <h4>{{ dish.cooking_time }}</h4>
+{#                            <h4>{{ dish.picture }}</h4>#}
+{#                            <a href="{% url 'detail' dish.id%}" class="btn btn-warning">Читать детальнее</a>#}
+{#                            <br><br><br>#}
+
+                            <form action="{% url 'detail' dish.id%}">
+                              <button class="btn btn-info">Детальный вид блюд</button>
+                            </form>
+
+                      <br>
+                      <form action="{% url 'update' dish.id%}">
+                         <button class="btn btn-info">Изменить блюда</button>
+                      </form>
+
+                     <br>
+                      <form action="{% url 'delete' dish.id%}">
+                        <button class="btn btn-info">Удалить блюду</button>
+                      </form>
+                        {% endfor %}
+                    {% else %}
+                        <p>Проектов нет</p>
+             {% endif %}
+            {# Комментарий #}
+
+                  <br><br>
+        <div class="content">
+
+            <div class="names"><h2 id="soupFont">Soups</h2></div>
+            <div class="soups">
+                    <div class="RisSoup">
+                        <p class="SoupName">Суп с диким рисом</p>
+                        <div class="SoupPricePosition">
+                            <p>260г 15 мин
+                                <img class="clockIcon" src="{% static 'main/menuImages/icon/clockIcon.png' %}" alt="">
+                            </p>
+                            <p class="soupPrice">1000 тг</p>
+                        </div>
+                        <p id="ingredientsSoup1">Рис, морковь, сыр, сливки 33%, лук, соль, перец</p>
+                            <img id="soup1" src="{% static 'main/menuImages/soups/супСРисом.png' %}" alt="soups1">
+                    </div>
+
+
+
+                <div class="TakoSoup">
+                    <p class="SoupName">Суп тако</p>
+                    <div class="SoupPricePosition">
+                        <p>290г 15 мин
+                            <img class="clockIcon" src="{% static 'main/menuImages/icon/clockIcon.png' %}" alt="">
+                        </p>
+                        <p class="soupPrice">1200 тг</p>
+                    </div>
+                    <p>Лепешка тако, фасоль, томаты, томатная паста, петрушка, соль, перец</p>
+                    <img id="soup2" src="{% static 'main/menuImages/soups/супТако.png' %}" alt="soups2">
+                </div>
+
+
+                <div class="pumpkinSoup">
+                    <p class="SoupName">Тыквенный суп пюре</p>
+                    <div class="SoupPricePosition">
+                        <p>290г 15 мин
+                            <img class="clockIcon" src="{% static 'main/menuImages/icon/clockIcon.png' %}" alt="">
+                        </p>
+                        <p class="soupPrice">1200 тг</p>
+                    </div>
+                    <p>Лепешка тако, фасоль, томаты, томатная паста, петрушка, соль, перец</p>
+                    <img id="soup3" src="{% static 'main/menuImages/soups/тыквенныйСупПюре.png' %}" alt="soups3">
+                </div>
+            </div>
+
+
+            <div class="names"><h2 id="HotDishFont">Hot dishes</h2></div>
+            <div class="hotDishes">
+                <div class="KesadilyaSFasolyu">
+                    <p class="HotDishName">Кесадилья с фасолью</p>
+                    <div class="HotDishPricePosition">
+                        <p>250г 10 мин
+                            <img class="clockIcon" src="{% static 'main/menuImages/icon/clockIcon.png' %}" alt="">
+                        </p>
+                        <p class="HotDishPrice">1600 тг</p>
+                    </div>
+                    <p id="ingredientsHotDish1">Лепешка, кинза, фасоль, томатный соус, шпинат</p>
+                    <img id="hotDish1" src="{% static 'main/menuImages/hotDish/КесадильяСФасолью.png' %}" alt="soups1">
+                </div>
+
+
+                <div class="PastaAlfredo">
+                    <p class="HotDishName">Паста Альфредо</p>
+                    <div class="HotDishPricePosition">
+                        <p>250г 10 мин
+                            <img class="clockIcon" src="{% static 'main/menuImages/icon/clockIcon.png' %}" alt="">
+                        </p>
+                        <p class="HotDishPrice">1600 тг</p>
+                    </div>
+                    <p id="ingredientsHotDish2">Лепешка, кинза, фасоль, томатный соус, шпинат</p>
+                    <img id="hotDish2" src="{% static 'main/menuImages/hotDish/пастаАльфредо.png' %}" alt="soups1">
+                </div>
+
+
+                <div class="PastaSGrebeshkom">
+                    <p class="HotDishName">Паста с гребешком</p>
+                    <div class="HotDishPricePosition">
+                        <p>250/100 г 10 мин
+                            <img class="clockIcon" src="{% static 'main/menuImages/icon/clockIcon.png' %}" alt="">
+                        </p>
+                        <p class="HotDishPrice">1600 тг</p>
+                    </div>
+                    <p id="ingredientsHotDish3">Паста, креветки, сыр пармезан, помидоры черри, чеснок, масло оливковое</p>
+                    <img id="hotDish3" src="{% static 'main/menuImages/hotDish/пастаСГребешком.png' %}" alt="soups1">
+                </div>
+
+
+
+            </div>
+
+            <div class="names"><h2 id="SideDishesFont">Side dishes</h2></div>
+            <div class="SideDishes">
+                <div class="ZapechennyiLuk">
+                    <p class="HotDishName">Запеченный лук</p>
+                    <div class="SideDishPricePosition">
+                        <p>260г 5 мин
+                            <img class="clockIcon" src="{% static 'main/menuImages/icon/clockIcon.png' %}" alt="">
+                        </p>
+                        <p class="SideDishPrice">600 тг</p>
+                    </div>
+                    <p id="ingredientsSideDish1">Лук красный, масло оливковое, петрушка, соль, перец</p>
+                    <img id="sideDish1" src="{% static 'main/menuImages/sideDishes/запеченныйЛук.png' %}" alt="soups1">
+                </div>
+
+
+                <div class="KartofelVarenyi">
+                    <p class="HotDishName">Картофель вареный</p>
+                    <div class="SideDishPricePosition">
+                        <p>300г 5 мин
+                            <img class="clockIcon" src="{% static 'main/menuImages/icon/clockIcon.png' %}" alt="">
+                        </p>
+                        <p class="SideDishPrice">800 тг</p>
+                    </div>
+                    <p id="ingredientsSideDish2">Картофель, петрушка, соль, перец, масло сливочное</p>
+                    <img id="sideDish2" src="{% static 'main/menuImages/sideDishes/картофельВареный.png' %}" alt="soups1">
+                </div>
+
+
+                <div class="KartofelZapechennyi">
+                    <p class="HotDishName">Картофель вареный</p>
+                    <div class="SideDishPricePosition">
+                        <p>350г 5 мин
+                            <img class="clockIcon" src="{% static 'main/menuImages/icon/clockIcon.png' %}" alt="">
+                        </p>
+                        <p class="SideDishPrice">900 тг</p>
+                    </div>
+                    <p id="ingredientsSideDish3">Картофель молодой, соль, перец, масло оливковое</p>
+                    <img id="sideDish3" src="{% static 'main/menuImages/sideDishes/картофельЗапеченный.png' %}" alt="soups1">
+                </div>
+            </div>
+
+
+
+            <div class="names"><h2 id="DessertsFont">Desserts</h2></div>
+            <div class="Desserts">
+                <div class="KrasnyiBarhat">
+                    <p class="DessertsName">Красный бархат</p>
+                    <div class="DessertsPricePosition">
+                        <p>120г 5 мин
+                            <img class="clockIcon" src="{% static 'main/menuImages/icon/clockIcon.png' %}" alt="">
+                        </p>
+                        <p class="DessertsPrice">700 тг</p>
+                    </div>
+                    <p id="ingredientsDesserts1">Мука, сахар, заварной крем, черная смородина</p>
+                    <img id="desserts1" src="{% static 'main/menuImages/desserts/красныйБархат.png' %}" alt="soups1">
+                </div>
+
+
+                <div class="Pechenye">
+                    <p class="DessertsName">Шоколадное печенье с Oreo</p>
+                    <div class="DessertsPricePosition">
+                        <p>200г 5 мин
+                            <img class="clockIcon" src="{% static 'main/menuImages/icon/clockIcon.png' %}" alt="">
+                        </p>
+                        <p class="DessertsPrice">700 тг</p>
+                    </div>
+                    <p id="ingredientsDesserts2">Мука, сахар, шоколад, Oreo, масло</p>
+                    <img id="desserts2" src="{% static 'main/menuImages/desserts/печенье.png' %}" alt="soups1">
+                </div>
+
+
+                <div class="Cheescake">
+                    <p class="DessertsName">Шоколадное печенье с Oreo</p>
+                    <div class="DessertsPricePosition">
+                        <p>200г 5 мин
+                            <img class="clockIcon" src="{% static 'main/menuImages/icon/clockIcon.png' %}" alt="">
+                        </p>
+                        <p class="DessertsPrice">700 тг</p>
+                    </div>
+                    <p id="ingredientsDesserts3">Мука, сахар, шоколад, Oreo, масло</p>
+                    <img id="desserts3" src="{% static 'main/menuImages/desserts/чискейк.png' %}" alt="soups1">
+                </div>
+            </div>
+
+
+
+
+
+            <div class="names"><h2 id="HotSnacksFont">Hot snacks</h2></div>
+            <div class="HotSnacks">
+                <div class="Hamburger">
+                    <p class="HotSnacksName">Китайский гамбургер</p>
+                    <div class="HotSnacksPricePosition">
+                        <p>235/50 г 15 мин
+                            <img class="clockIcon" src="{% static 'main/menuImages/icon/clockIcon.png' %}" alt="">
+                        </p>
+                        <p class="HotSnacksPrice">1400 тг</p>
+                    </div>
+                    <p id="ingredientsHotSnacks1">Лепешка, говядина, лук, сладкий перец, соевый соус</p>
+                    <img id="HotSnacks1" src="{% static 'main/menuImages/hotSnacks/КитайскийГамбургер.png' %}" alt="soups1">
+                </div>
+
+
+                <div class="KrevetkiNaGrile">
+                    <p class="HotSnacksName">Креветки на гриле</p>
+                    <div class="HotSnacksPricePosition">
+                        <p>470г 15 мин
+                            <img class="clockIcon" src="{% static 'main/menuImages/icon/clockIcon.png' %}" alt="">
+                        </p>
+                        <p class="HotSnacksPrice">1500 тг</p>
+                    </div>
+                    <p id="ingredientsHotSnacks2">Креветки, чеснок, оливковое масло, петрушка</p>
+                    <img id="HotSnacks2" src="{% static 'main/menuImages/hotSnacks/креветкиНаГриле.png' %}" alt="soups1">
+                </div>
+
+
+                <div class="RolliSKrevetkami">
+                    <p class="HotSnacksName">Роллы с креветками</p>
+                    <div class="HotSnacksPricePosition">
+                        <p>380г 10 мин
+                            <img class="clockIcon" src="{% static 'main/menuImages/icon/clockIcon.png' %}" alt="">
+                        </p>
+                        <p class="HotSnacksPrice">1600 тг</p>
+                    </div>
+                    <p id="ingredientsHotSnacks3">Креветки, мука, соус терияки, лайм </p>
+                    <img id="HotSnacks3" src="{% static 'main/menuImages/hotSnacks/роллыСКреветкой.png' %}" alt="soups1">
+                </div>
+            </div>
+
+
+            <div class="names"><h2 id="ColdSnacksFont">Cold snacks</h2></div>
+            <div class="ColdSnacks">
+                <div class="KartofelTornado">
+                    <p class="ColdSnacksName">Картофель Торнадо</p>
+                    <div class="ColdSnacksPricePosition">
+                        <p>190г 15 мин
+                            <img class="clockIcon" src="{% static 'main/menuImages/icon/clockIcon.png' %}" alt="">
+                        </p>
+                        <p class="ColdSnacksPrice">2200 тг</p>
+                    </div>
+                    <p id="ingredientsColdSnacks1">Картофель, петрушка, соль, перец</p>
+                    <img id="ColdSnacks1" src="{% static 'main/menuImages/coldSnacks/картофельТорнадо.png' %}" alt="soups1">
+                </div>
+
+
+                <div class="rollySOgursom">
+                    <p class="ColdSnacksName">Роллы с огурцом</p>
+                    <div class="ColdSnacksPricePosition">
+                        <p>210г 10 мин
+                            <img class="clockIcon" src="{% static 'main/menuImages/icon/clockIcon.png' %}" alt="">
+                        </p>
+                        <p class="ColdSnacksPrice">2000 тг</p>
+                    </div>
+                    <p id="ingredientsColdSnacks2">Огурец, сливочный сыр, помидор, укроп</p>
+                    <img id="ColdSnacks2" src="{% static 'main/menuImages/coldSnacks/роллыСОгурцом.png' %}" alt="soups1">
+                </div>
+
+
+                <div class="syrnayaTarelka">
+                    <p class="ColdSnacksName">Сырная тарелка</p>
+                    <div class="ColdSnacksPricePosition">
+                        <p>240г 5 мин
+                            <img class="clockIcon" src="{% static 'main/menuImages/icon/clockIcon.png' %}" alt="">
+                        </p>
+                        <p class="ColdSnacksPrice">2100 тг</p>
+                    </div>
+                    <p id="ingredientsColdSnacks3">Дорблю, пармезан, канталь, мед, грецкий орех, инжир</p>
+                    <img id="ColdSnacks3" src="{% static 'main/menuImages/coldSnacks/сырнаяТарелка.png' %}" alt="soups1">
+                </div>
+            </div>
+
+
+            <div class="names"><h2 id="SaladsFont">Salads</h2></div>
+            <div class="Salads">
+                <div class="SaladsOgursom">
+                    <p class="SaladsName">Салат с огурцами и авокадо</p>
+                    <div class="SaladsPricePosition">
+                        <p>350г 10 мин
+                            <img class="clockIcon" src="{% static 'main/menuImages/icon/clockIcon.png' %}" alt="">
+                        </p>
+                        <p class="SaladsPrice">1000 тг</p>
+                    </div>
+                    <p id="ingredientsSalads1">Огурцы, авокадо, петрушка, орехи кешью, соус чили</p>
+                    <img id="Salads1" src="{% static 'main/menuImages/salads/салатСОгурациИАвокадо.png' %}" alt="soups1">
+                </div>
+
+
+                <div class="SaladSoSparzhei">
+                    <p class="SaladsName">Салат со спаржей</p>
+                    <div class="SaladsPricePosition">
+                        <p>350г 10 мин
+                            <img class="clockIcon" src="{% static 'main/menuImages/icon/clockIcon.png' %}" alt="">
+                        </p>
+                        <p class="SaladsPrice">1000 тг</p>
+                    </div>
+                    <p id="ingredientsSalads2">Спаржа, перепелиные яйца, соль, перец, оливковое масло, чеснок, сыр пармезан, жареный лук</p>
+                    <img id="Salads2" src="{% static 'main/menuImages/salads/салатСоСпаржей.png' %}" alt="soups1">
+                </div>
+
+
+                <div class="SaladSoShpinatom">
+                    <p class="SaladsName">Салат со шпинатом</p>
+                    <div class="SaladsPricePosition">
+                        <p>300г 10 мин
+                            <img class="clockIcon" src="{% static 'main/menuImages/icon/clockIcon.png' %}" alt="">
+                        </p>
+                        <p class="SaladsPrice">1000 тг</p>
+                    </div>
+                    <p id="ingredientsSalads3">Булгур, лук красный, помидоры черри, масло оливковое, шпинат,</p>
+                    <img id="Salads3" src="{% static 'main/menuImages/salads/СалатСошпинатом.png' %}" alt="soups1">
+                </div>
+            </div>
+        </div>
+
+
+            <footer class="footer">
+
+                <section class="section  section--map">
+                    <div class="container">
+                        <div class="map">
+                            <h2 class="map__title">
+                                <div><i class="fas fa-map-marker-alt"></i></div>
+                                <a href="https://goo.gl/maps/BF4HEsbLBACpcv346" target="_blank">Open Map</a>
+
+                            </h2>
+                            <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A126c6704451361330b7b84e913c57705032beed99434a8e39844b124cead8ccd&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <div class="footer-co-by">
+                            <div class="footer-copyright">
+                                <h5 class = "footer-copyright-text">Copyright © 2021 <b class="footer-copyright-text-bold">Simple</b> All Rights Reserved.</h5>
+                            </div>
+                            <div class="footer-powered">
+                                <h5 class = " footer-powered-by">Powered by <b class="footer-copyright-text-bold">WordPress</b> - Designed & Developed By <b class="footer-copyright-text-bold">Turgynbek Alikhan & Beisenbayev Akzhol</b></h5>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </footer>
+    </body>
+</html>

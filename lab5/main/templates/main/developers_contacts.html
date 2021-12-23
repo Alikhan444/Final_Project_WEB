@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'main/css/contacts_of_developers.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:300i,400,700&display=swap&subset=cyrillic-ext"
+          rel="stylesheet">
+    <title>Information about Team</title>
+</head>
+<body>
+
+
+<div class="container">
+    <div class="header__inner">
+        <div class="header__logo" style="color:black;">Simple</div>
+
+        <nav class="nav">
+            <a class="nav__link" href="{% url 'about' %}" style="color:black;">About</a>
+            <a class="nav__link" href="#" style="color:black;">Service</a>
+            <a class="nav__link" href="{% url 'menu' %}" style="color:black;">Menu</a>
+            <a class="nav__link" href="{% url 'info' %}" style="color:black;">ProjectInfo</a>
+            <a class="nav__link" href="{% url 'team' %}" style="color:black;">TeamInfo</a>
+            <a class="nav__link active" href="{% url 'contacts' %}" style="color:black;">Contacts</a>
+            <a class="nav__link" href="{% url 'pay' %}" style="color:black;">Pay</a>
+            <a class="nav__link" href="{% url 'adminpanel' %}" style="color:black;">Admin panel</a>
+        </nav>
+
+    </div>
+</div>
+
+
+</header>
+
+<div class="content">
+    <div class="Akzhol">
+        <div class="imageAko">
+            <img id="Akzhol" src="{% static 'main/images/Stat.jpeg' %}" alt="">
+        </div>
+
+        <div class="infoAko">
+            <h1>Akzhol Beisenbayev</h1>
+            <hr>
+            <h3>Java Back-end Developer</h3>
+            <h4>IITU. Software Engineer. 3 course student </h4>
+            <h6>I love a balanced life. I put personal growth first. I am actively involved in sports, programming, planning, the development of four types of intelligence, reading. Always ready to learn something new.</h6>
+
+            {% for el in datas %}
+                <h6>{{ el }}</h6>
+            {% endfor %}
+            <h6>{{contact1}}</h6>
+        </div>
+
+    </div>
+
+    <hr>
+    <div class="Alikhan">
+        <div class="infoAli">
+            <h1>Alikhan Turgynbek</h1>
+            <hr>
+            <h3>Java Back-end Developer</h3>
+            <h4>IITU. Software Engineer. 3 course student </h4>
+            <h6>I love to play various games, play sports and watch anime in my free time. I am actively studying different programming languages. I'm also interested in cooking. I'm in a relationship</h6>
+
+            <h6>Silicon Valley, Google Headquarters</h6>
+            <h6>alikhanturgynbek@google.com</h6>
+            <h6>{{contact2}}</h6>
+        </div>
+
+        <div class="imageAli">
+            <img id="Alikhan" src="{% static 'main/images/Scala.jpeg' %}" alt="">
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
